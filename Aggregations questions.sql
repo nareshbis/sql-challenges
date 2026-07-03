@@ -1,5 +1,5 @@
 -- Intermediate Aggregation questions to practice
-																											-- Week-1 Date June 12, 2026; 9:52AM
+																											
 -- 1.Find the total number of customers in each country.
 SELECT Country,count(*) as Total_Customers
 FROM classicmodels.customers 
@@ -86,7 +86,7 @@ WITH CTE AS
 select city as cityname from classicmodels.customers 
 where cityname = 'Lille'	
 -- ---------------------------------------------------------------------------------------------------------------------------------------------
-																												   -- Date June 15, 2026; 9:52AM 
+																												 
 -- 10.Find the total credit exposure (sum of credit limits) by country.
 SELECT country,sum(creditlimit) CreditExposure
 FROM classicmodels.customers 
@@ -176,7 +176,7 @@ GROUP BY salesrepemployeenumber)
 	WHERE Total_CL = (SELECT MAX(Total_cl) FROM CTE);
 -- ---------------------------------------------------------------------------------------------------------------------------------------------
 -- 10.Find countries where the top customer contributes more than 50% of that country's total credit limit.
-																												   -- Date June 17, 2026; 9:52AM 
+																												    
 WITH CTE AS (SELECT country,customernumber,creditlimit,
 	   SUM(creditlimit) OVER (PARTITION BY country) as Country_Total,
 	   DENSE_RANK() OVER (PARTITION BY country ORDER BY creditlimit desc) as Rnk
